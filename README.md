@@ -1,15 +1,17 @@
 # CIBERSORT
 ## Using CIBERSORT to estimate cell type composition.
 
-Using our adipose tissue signature matrix to estimate cell type composition of adipose tissue.
+Thanks for using our signature matrix to estimate the cellular composition of your adipose tissue RNA-seq samples.
 
-The adipose tissue signature matrix was constructed from independent purified cell type RNA-seq data from macrophages, adipocytes, endothelial cells and CD4+ t-cells – Some of the most dominant cell types present in adipose tissue.
+The adipose tissue signature matrix was constructed from datasets that are independent from TwinsUK and consist of purified cell type RNA-seq data obtained from macrophages, adipocytes, endothelial cells and CD4+ t-cells – These are thought to be some of the most dominant cell types present in adipose tissue biopsies.
 
-The signature matrix was constructed using Counts Per Million (CPM) gene expression levels that have not been filtered for expression. Each deconvolution happens on a sample by sample basis, therefore it is not necessary to filter genes for example that are expressed in at least 10% of samples. Additionally, rare cell types will be represented by lowly expressed genes relative to other genes expressed in more common cell types (linearity assumption of all cell estimation methods) so filtering lowly expressed genes could bias cell type estimates upwards.
+The signature matrix was constructed using Counts Per Million (CPM) gene expression levels that have not been filtered for expression. It is important that your adipose tissue RNA-seq data is therefore in the same numeric space. Each deconvolution happens on a sample by sample basis, therefore it is not necessary to filter genes that are expressed in at least 10% of samples. Additionally, rare cell types will be represented by lowly expressed genes relative to other genes expressed in more common cell types (linearity assumption of all cell estimation methods) so filtering lowly expressed genes could bias cell type estimates upwards.
 
-It is therefore important that you take the raw gene count matrix (obtained from featureCount for example) and transform them into CPM using the following R code:
+It is important that you take the raw gene count matrix obtained from your BAMs (we used featureCount for example) and transform them into CPM using the following simple R code:
 
+```
 expr[,2:ncol(expr)]=apply(expr,2,function(x) (x/sum(x)) *1e6)
+```
 
 where: 
 
