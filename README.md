@@ -1,5 +1,5 @@
 # CIBERSORT
-- Using CIBERSORT to estimate cell type composition.
+## Using CIBERSORT to estimate cell type composition.
 
 Using our adipose tissue signature matrix to estimate cell type composition of adipose tissue.
 
