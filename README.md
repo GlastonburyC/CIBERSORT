@@ -1,6 +1,27 @@
 # CIBERSORT
 ## Using CIBERSORT to estimate cell type composition.
 
+## TwinsUK
+
+adapter/polyA trimming steps:
+```
+trim_galore -stringency 5 -q 1 -o '$line' --paired '$line'/'$line'.f1.fq '$line'/'$line'.f2.fq
+perl prinseq-lite.pl -fastq '$line'/'$line'.f1_val_1.fq -fastq2 '$line'/'$line'.f2_val_2.fq -out_good '$line'/'$line' -trim_tail_left 5 -trim_tail_right 5 -min_len 20
+```
+STAR alignment:
+```
+./STAR --runThreadN '$THREAD_NO' --runMode alignReads --readFilesIn '$line'/'$line'_1.fastq '$line'/'$line'_2.fastq --genomeDir hg19 --outSAMstrandField intronMotif --outFilterMultimapNmax 30 --alignIntronMax 1000000 --alignMatesGapMax 1000000 --chimSegmentMin 15 --outMultimapperOrder Random --outSAMunmapped Within --outSAMattrIHstart 0 --outFilterIntronMotifs RemoveNoncanonicalUnannotated --sjdbOverhang 48 --outFilterMismatchNmax 6 --outSAMattributes NH nM NM MD HI --outSAMattrRGline  ID:'$line'_maternal PU:Illumina PL:Illumina LB:'$line'_maternal SM:'$line'_maternal CN:Seq_centre --outSAMtype BAM SortedByCoordinate --outFileNamePrefix '$line'_ref.
+```
+read filtering:
+```
+samtools view -@ '$THREAD_NO' -b -F4 -q 30 '$line'/reference/'$line'_ref.Aligned.sortedByCoord.out.bam -o '$line'/reference/'$line'.filtered.bam
+```
+gene counts with Gencode v19
+```
+featureCounts -p -T '$THREAD_NO' -a gencode.v19.annotation.gtf -o '$line'/reference/'$line'.GeneCount_Ref.txt '$line'/reference/'$line'.filtered.bam
+```
+
+# Other cohorts
 Thanks for using our signature matrix to estimate the cellular composition of your adipose tissue RNA-seq samples.
 
 The adipose tissue signature matrix was constructed from datasets that are independent from TwinsUK and consist of purified cell type RNA-seq data obtained from macrophages, adipocytes, endothelial cells and CD4+ t-cells – These are thought to be some of the most dominant cell types present in adipose tissue biopsies.
@@ -20,7 +41,7 @@ where:
 
 Cell type deconvolution is very sensitive to the method/normalization used and therefore if we observe vast differences in cell estimates I may reproduce the signature matrix using a pipeline closer to your RNA-seq study (i.e. the RNA-seq aligner / gencode annotation) and ask you to re-run.
  
-# CIBERSORT to estimate cell fractions:
+## CIBERSORT to estimate cell fractions:
 ``` 
 R –-no-restore
 library(Rserve)
@@ -40,7 +61,7 @@ This will output the cell type estimates, with some additional information in th
 
 Please send these cell estimates to us so we can see if they are similar to our predictions. If that is the case, we ask you to continue this pipeline.
  
-# Correlation of cell type estimates with obesity metrics:
+## Correlation of cell type estimates with obesity metrics:
 
 Please test the following correlations with BMI both with and without removing outlier cell estimates (+- 3 S.D from the mean) for each cell type.
 
