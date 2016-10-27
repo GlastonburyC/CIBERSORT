@@ -44,9 +44,9 @@ Please send these cell estimates to us so we can see if they are similar to our 
 
 Please test the following correlations with BMI both with and without removing outlier cell estimates (+- 3 S.D from the mean) for each cell type.
 
-All macrophages (M1+M2 macrophages) 
-Adipocytes vs BMI
-You can also test the other cell types present in the signature matrix if you observe they are present in your samples (not mostly zero).
+- All macrophages (M1+M2 macrophages).
+- Adipocytes vs BMI.
+- You can also test the other cell types present in the signature matrix if you observe they are present in your samples.
 
 If you have any other obesity metric, such as central adiposity (We have used DEXA scans for this) we would also be grateful to see a correlation with cell type proportion.
 
