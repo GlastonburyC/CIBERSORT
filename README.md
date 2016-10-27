@@ -1,5 +1,4 @@
-# CIBERSORT
-## Using CIBERSORT to estimate cell type composition.
+# Using CIBERSORT to estimate cell type composition.
 
 ## TwinsUK
 
