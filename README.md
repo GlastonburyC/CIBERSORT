@@ -20,6 +20,22 @@ gene counts with Gencode v19
 ```
 featureCounts -p -T '$THREAD_NO' -a gencode.v19.annotation.gtf -o '$line'/reference/'$line'.GeneCount_Ref.txt '$line'/reference/'$line'.filtered.bam
 ```
+Gene counts then converted to CPM:
+```
+expr[,2:ncol(expr)]=apply(expr,2,function(x) (x/sum(x)) *1e6)
+write.table(expr,"TwinsUK.adiposeSamples.txt",col.names=T,row.names=F,sep="\t",quote=F)
+```
+
+CIBERSORT used to estimate fractions:
+
+``` 
+R –-no-restore
+library(Rserve)
+Rserve()
+q()
+java -jar CIBERSORT.jar -M DeCODE.adiposeSamples.txt -B Adipose.sigMatrix.txt –n 1000 >> Decode.Adipose.CellEsts.txt
+```
+
 
 # Other cohorts
 Thanks for using our signature matrix to estimate the cellular composition of your adipose tissue RNA-seq samples.
