@@ -33,7 +33,7 @@ R –-no-restore
 library(Rserve)
 Rserve()
 q()
-java -jar CIBERSORT.jar -M DeCODE.adiposeSamples.txt -B Adipose.sigMatrix.txt –n 1000 >> Decode.Adipose.CellEsts.txt
+java -jar CIBERSORT.jar -M TwinsUK.adiposeSamples.txt -B Adipose.sigMatrix.txt –n 1000 >> TwinsUK.Adipose.CellEsts.txt
 ```
 
 
