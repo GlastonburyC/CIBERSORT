@@ -2,6 +2,8 @@
 
 ## TwinsUK
 
+### RNA-seq read filtering and alignment:
+
 adapter/polyA trimming steps:
 ```
 trim_galore -stringency 5 -q 1 -o '$line' --paired '$line'/'$line'.f1.fq '$line'/'$line'.f2.fq
@@ -25,7 +27,8 @@ expr[,2:ncol(expr)]=apply(expr,2,function(x) (x/sum(x)) *1e6)
 write.table(expr,"TwinsUK.adiposeSamples.txt",col.names=T,row.names=F,sep="\t",quote=F)
 ```
 
-CIBERSORT used to estimate fractions:
+### CIBERSORT used to estimate fractions:
+
 
 ``` 
 R –-no-restore
