@@ -1,3 +1,12 @@
 # Using CIBERSORT to estimate cell type composition.
 
-Here we have deposited our cell type estimates for both TwinsUK and GTEx. Additionally, we have included code for estimating cell proportions using CIBERSORT and performing our simulation studies.
+We present computationally estimated cell type proportions from two seperate cohorts: TwinsUk & The Genotype Tissue Expression Consortium GTEx
+
+Cell estimates for GTEx and TwinsUK can be found in:
+
+```cohort_CellEstimates/```
+
+
+Additionally, we provide all summary statistics for eQTL analysis adjusted for cell type proportions and GxCell interaction tests [available here.](https://drive.google.com/open?id=17eyKz1YWa8Ujb6Y0ELXSwqmm7fj99j1Q)
+
+
