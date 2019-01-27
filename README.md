@@ -1,4 +1,4 @@
-# Using CIBERSORT to estimate cell type composition.
+# Using CIBERSORT to estimate Adipose Tissue cell type composition.
 
 We present computationally estimated cell type proportions from two seperate cohorts: `TwinsUK` & The Genotype Tissue Expression Consortium (`GTEx`).
 
